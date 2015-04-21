@@ -74,7 +74,7 @@ else
   status "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
 
-$BOWER_DIR=$(cat $build_dir/.bowerrc | $bp_dir/vendor/jq -r .directory)
+BOWER_DIR=$(cat $build_dir/.bowerrc | $bp_dir/vendor/jq -r .directory)
 
 # If node_modules directory is checked into source control then
 # rebuild any native deps. Otherwise, restore from the build cache.
