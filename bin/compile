@@ -184,9 +184,13 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
 echo "export PATH=\"\$HOME/.gem/ruby/$RUBY_VERSION/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 
 #run bundle install
-cd $build_dir
-status "Running bundle install"
-bundle install
+is_gemfile_present= [ -f $build_dir/Gemfile ] || [ -f $build_dir/gemfile ];
+if $is_gemfile_present; then
+    status "Found Gemfile"
+    status "Running bundle install"
+    cd $build_dir
+    bundle install
+fi
 
 # Check and run Grunt
 (
