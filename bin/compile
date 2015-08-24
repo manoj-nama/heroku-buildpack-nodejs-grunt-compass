@@ -183,6 +183,11 @@ mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
 echo "export PATH=\"\$HOME/.gem/ruby/$RUBY_VERSION/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 
+#run bundle install
+cd $build_dir
+status "Running bundle install"
+bundle install
+
 # Check and run Grunt
 (
   if $is_gruntfile_present; then
